@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
 .OuterContainer{
@@ -155,6 +158,82 @@ header{
     border: solid #2196F3;
   }
 
+  /* Header Section complete */
+
+  /* main section */
+  main{
+    width: 100%;
+    height: auto;
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+  }
+
+  .Job-Posting-Container{
+    width: 70%;
+    max-width: 2000px;
+    height: auto;
+    background-color: thistle;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .jobCard{
+    width: 29%;
+    height: 250px;
+    background-color: white;
+    margin: 40px 10px;
+    position: relative;
+    border-radius: 10px;
+  }
+
+  .logocard{
+    width: 65px;
+    height: 65px;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 15px;
+    position: absolute;
+    top: -13%;
+    left: 5%;
+  }
+
+  .companyLogo{
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .jobInfo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 55px 0px 10px 0px;
+  }
+
+  .jobInfo .dot{
+    font-weight: bold;
+  }
+  .jobInfo .CompanyName, p{
+    margin: 0px 10px;
+    color: #9DAEC2;
+  }
+
+  .jobCard .Role{
+    margin: 10px 10px;
+  }
+
+  .jobCard .jobLocation{
+    margin: 30px 10px 0px 10px;
+    color: black;
+
+  }
+
 
   @media only screen and (min-width: 2500px){
     header {
@@ -226,7 +305,7 @@ header{
 
         .LogoConatiner{
             width: 85%;
-            height: 50%;
+            height: 40%;
         }
 
         .SearchContainer{
@@ -235,6 +314,16 @@ header{
             left: 50%;
             transform: translate(-50%,-50%);
         }
+
+        .Job-Posting-Container{
+            width: 90%;
+            height: auto;
+            background-color: thistle;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            flex-wrap: wrap;
+          }
     }
 
 
@@ -261,6 +350,15 @@ header{
         transform: translate(-50%,-50%);
     }
 
+    .jobCard{
+        width: 38%;
+        height: 250px;
+        background-color: white;
+        margin: 40px 15px;
+        position: relative;
+        border-radius: 10px;
+      }
+
     
    
 }
@@ -272,6 +370,15 @@ header{
         left: 50%;
         transform: translate(-50%,-50%);
     }
+
+    .jobCard{
+        width: 45%;
+        height: 250px;
+        background-color: white;
+        margin: 40px 5px;
+        position: relative;
+        border-radius: 10px;
+      }
 }
 
 
@@ -310,4 +417,13 @@ header{
     .submit button{
         padding: 5px 5px;
     }
+
+    .jobCard{
+        width: 70%;
+        height: 250px;
+        background-color: white;
+        margin: 40px 5px;
+        position: relative;
+        border-radius: 10px;
+      }
 }
