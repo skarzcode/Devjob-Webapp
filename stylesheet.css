@@ -39,7 +39,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px auto;
+    margin: -10px auto;
 }
 
 .Light-DarkMode{
@@ -791,9 +791,9 @@ header{
       }
 
       .back{
-        width: 50px;
+        width: 30px;
         position: absolute;
-    right: 90%;
+        right: 91%;
       }
 
       
