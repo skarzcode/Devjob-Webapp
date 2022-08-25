@@ -1,17 +1,37 @@
-import users from "./data.json" assert {type: "json"};
+// import users from "./data.json" assert {type: "json"};
 const jobPostingContainer = document.querySelector(".Job-Posting-Container");
 let currentJob;
 const CompanyBanner = document.querySelector(".Company-Info");
 const CompanyDetails = document.querySelector(".Job-info-Container");
 const searchContainer = document.querySelector(".SearchContainer");
-// const testCheck = document.querySelector(".testCheck");
+const url = "./data.json";
+let res;
+const testCheck = document.querySelector(".testCheck");
+
+
+function reqData(){
+    fetch(url)
+       .then(res=>res.json())
+       .then(data=>{
+          console.log(data);
+           res = data;
+          data.forEach(current => {
+            renderjobs(current);
+        });
+        
+       })
+       .catch((error)=>{
+          console.error(error);
+       })};
+    
 
 
 
-console.log(currentJob);
 
-console.log(users[0]);
-console.log("hello");
+// console.log(currentJob);
+
+// console.log(users[0]);
+// console.log("hello");
 
 
 function renderjobs(current){
@@ -62,21 +82,21 @@ function renderjobs(current){
     location.innerHTML = current.location;
     card.appendChild(location);
 
-    // testCheck.addEventListener("click", function(){
-    //     if(testCheck.checked && contract.innerHTML == "Full Time"){
-    //     card.style.display = "none";
-    //     } else if (testCheck.checked == false){
-    //         card.style.display = "block";
-    //     }
-    // })
+    testCheck.addEventListener("click", function(){
+        if(testCheck.checked && contract.innerHTML == "Full Time"){
+        card.style.display = "none";
+        } else if (testCheck.checked == false){
+            card.style.display = "block";
+        }
+    })
 
     card.addEventListener("click", function(){
-    users.forEach(curr => {
+    res.forEach(curr => {
         if (card.id == curr.id){
         let currentJob = curr;
         console.log(currentJob);
-        // CompanyBanner.classList.add("DisplayFlex");
-        // CompanyDetails.classList.add("DisplayBlock");
+        CompanyBanner.classList.add("DisplayFlex");
+        CompanyDetails.classList.add("DisplayBlock");
         jobPostingContainer.classList.add("DisplayNoneanimation")
         searchContainer.classList.add("DisplayNoneanimation");
         setTimeout(() => {
@@ -94,7 +114,9 @@ function renderjobs(current){
 
 }
 
-users.forEach(current => {
-    renderjobs(current);
-});
+
+
+
+reqData();
+
 
