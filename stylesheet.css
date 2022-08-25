@@ -437,6 +437,20 @@ header{
     cursor: pointer;
   }
 
+  .back{
+    width: 3%;
+    position: absolute;
+    bottom:-5%;
+    left: 21.5%;
+  border: none;
+  background-color: transparent;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: gray;
+  }
+
   .DisplayFlex{
     display: flex;
   }

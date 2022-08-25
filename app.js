@@ -7,6 +7,7 @@ const searchContainer = document.querySelector(".SearchContainer");
 const url = "./data.json";
 let res;
 const testCheck = document.querySelector(".testCheck");
+const backbtn = document.querySelector(".back");
 
 
 function reqData(){
@@ -102,14 +103,29 @@ function renderjobs(current){
         // jobPostingContainer.classList.remove("Displayanimation");
         jobPostingContainer.classList.add("DisplayNoneanimation")
         searchContainer.classList.add("DisplayNone");
+        backbtn.classList.add("DisplayFlex")
         setTimeout(() => {
-            jobPostingContainer.classList.add("DisplayNone")  
-        }, 1500);
+            jobPostingContainer.classList.add("DisplayNone")
+        }, 1000);
         }
     });
     })
 
 }
+
+backbtn.addEventListener("click", function(){
+    jobPostingContainer.classList.add("Displayanimation");
+    jobPostingContainer.classList.remove("DisplayNone");
+    jobPostingContainer.classList.remove("DisplayNoneanimation")
+    CompanyBanner.classList.remove("Displayanimation2");
+    CompanyDetails.classList.remove("Displayanimation3");
+    searchContainer.classList.remove("DisplayNone");
+    backbtn.classList.remove("DisplayFlex")
+    setTimeout(() => {
+        jobPostingContainer.classList.remove("Displayanimation");
+    }, 1000);
+    
+})
 
 
 
