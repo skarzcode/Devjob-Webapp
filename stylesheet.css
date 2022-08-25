@@ -259,7 +259,7 @@ header{
     height: 180px;
     margin: 10px;
     position: absolute;
-    top: 0px;
+    top: 20px;
    display: none;
    z-index: 10;
   }
@@ -440,8 +440,8 @@ header{
   .back{
     width: 3%;
     position: absolute;
-    bottom:-5%;
-    left: 21.5%;
+    left: 15%;
+    top: 0%;
   border: none;
   background-color: transparent;
   display: none;
@@ -700,11 +700,14 @@ header{
 
       .Company-Info{
         width: 90%;
+        top: 35px;
       }
+
+      
 
       .Job-info-Container{
         width: 90%;
-        margin-top: 50px;
+        margin-top: 70px;
       }
 
       .cta2 {
@@ -712,9 +715,10 @@ header{
 
     }
 
-    
-   
+    .back{
+        width: 5%;
 }
+  }
 
 @media only screen and (max-width: 600px){
     .SearchContainer{
@@ -741,7 +745,7 @@ header{
         align-items: center;
         flex-direction: column;
         background-color: white;
-        top: 0px;
+        top: 35px;
       }
 
       .Company-Site {
@@ -841,4 +845,8 @@ header{
         position: relative;
         border-radius: 10px;
       }
+
+      .back{
+        width: 7%;
+}
 }
