@@ -99,9 +99,12 @@ function renderjobs(current){
         console.log(currentJob);
         CompanyBanner.classList.add("Displayanimation2");
         CompanyDetails.classList.add("Displayanimation3");
-        jobPostingContainer.classList.remove("Displayanimation");
+        // jobPostingContainer.classList.remove("Displayanimation");
         jobPostingContainer.classList.add("DisplayNoneanimation")
         searchContainer.classList.add("DisplayNone");
+        setTimeout(() => {
+            jobPostingContainer.classList.add("DisplayNone")  
+        }, 1500);
         }
     });
     })
