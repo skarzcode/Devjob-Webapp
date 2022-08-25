@@ -85,6 +85,8 @@ function renderjobs(current){
     testCheck.addEventListener("click", function(){
         if(testCheck.checked && contract.innerHTML == "Full Time"){
         card.style.display = "none";
+        jobPostingContainer.classList.add("Displayanimation");
+        jobPostingContainer.classList.remove("DisplayNoneanimation")
         } else if (testCheck.checked == false){
             card.style.display = "block";
         }
@@ -95,19 +97,11 @@ function renderjobs(current){
         if (card.id == curr.id){
         let currentJob = curr;
         console.log(currentJob);
-        CompanyBanner.classList.add("DisplayFlex");
-        CompanyDetails.classList.add("DisplayBlock");
+        CompanyBanner.classList.add("Displayanimation2");
+        CompanyDetails.classList.add("Displayanimation3");
+        jobPostingContainer.classList.remove("Displayanimation");
         jobPostingContainer.classList.add("DisplayNoneanimation")
-        searchContainer.classList.add("DisplayNoneanimation");
-        setTimeout(() => {
-            jobPostingContainer.classList.add("DisplayNone")
-            searchContainer.classList.add("DisplayNone");
-            jobPostingContainer.classList.remove("DisplayNoneanimation")
-            searchContainer.classList.remove("DisplayNoneanimation");
-             CompanyBanner.classList.add("DisplayFlex");
-        CompanyDetails.classList.add("DisplayBlock");
-        
-        }, 400);
+        searchContainer.classList.add("DisplayNone");
         }
     });
     })
