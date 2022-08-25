@@ -1,7 +1,12 @@
 import users from "/data.json" assert {type: "json"};
 const jobPostingContainer = document.querySelector(".Job-Posting-Container");
 let currentJob;
-const CompanyInfo = document.querySelector("Company-Info");
+const CompanyBanner = document.querySelector(".Company-Info");
+const CompanyDetails = document.querySelector(".Job-info-Container");
+const searchContainer = document.querySelector(".SearchContainer");
+// const testCheck = document.querySelector(".testCheck");
+
+
 
 console.log(currentJob);
 
@@ -57,11 +62,32 @@ function renderjobs(current){
     location.innerHTML = current.location;
     card.appendChild(location);
 
+    // testCheck.addEventListener("click", function(){
+    //     if(testCheck.checked && contract.innerHTML == "Full Time"){
+    //     card.style.display = "none";
+    //     } else if (testCheck.checked == false){
+    //         card.style.display = "block";
+    //     }
+    // })
+
     card.addEventListener("click", function(){
     users.forEach(curr => {
         if (card.id == curr.id){
         let currentJob = curr;
         console.log(currentJob);
+        // CompanyBanner.classList.add("DisplayFlex");
+        // CompanyDetails.classList.add("DisplayBlock");
+        jobPostingContainer.classList.add("DisplayNoneanimation")
+        searchContainer.classList.add("DisplayNoneanimation");
+        setTimeout(() => {
+            jobPostingContainer.classList.add("DisplayNone")
+            searchContainer.classList.add("DisplayNone");
+            jobPostingContainer.classList.remove("DisplayNoneanimation")
+            searchContainer.classList.remove("DisplayNoneanimation");
+             CompanyBanner.classList.add("DisplayFlex");
+        CompanyDetails.classList.add("DisplayBlock");
+        
+        }, 400);
         }
     });
     })

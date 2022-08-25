@@ -249,7 +249,6 @@ header{
     max-width: 2000px;
     height: 180px;
     margin: 10px;
-    display: flex;
     position: absolute;
     top: -80px;
     display: none;
@@ -426,6 +425,64 @@ header{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+  .DisplayFlex{
+    display: flex;
+  }
+
+  .DisplayBlock{
+    display: block;
+  }
+
+  .DisplayNoneanimation{
+    animation: displayNone 0.3s ease-out forwards;
+    animation-fill-mode: forwards;
+  }
+
+  .DisplayNone{
+    display: none;
+  }
+
+  @keyframes displayNone {
+    0%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 0.7;
+    }
+    20%{
+        opacity: 0.5;
+    }
+    30%{
+        opacity: 0.3;
+    }
+    40%{
+        opacity: 0.1;
+    }
+
+    50%{
+        opacity: 0.05;
+    }
+    60%{
+        opacity: 0;
+    }
+    70%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
+    }
+
+    90%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+
+   
+
   }
 
 
@@ -607,7 +664,6 @@ header{
         width: 90%;
         height: 220px;
         margin: 10px;
-        display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
