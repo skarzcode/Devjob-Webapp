@@ -643,7 +643,6 @@ header{
         .Job-Posting-Container{
             width: 90%;
             height: auto;
-            background-color: thistle;
             justify-content:center;
             align-items: center;
             flex-wrap: wrap;
