@@ -1,4 +1,4 @@
-import users from "/data.json" assert {type: "json"};
+import users from "./data.json" assert {type: "json"};
 const jobPostingContainer = document.querySelector(".Job-Posting-Container");
 let currentJob;
 const CompanyBanner = document.querySelector(".Company-Info");
