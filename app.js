@@ -8,14 +8,32 @@ const url = "./data.json";
 let res;
 const testCheck = document.querySelector(".testCheck");
 const backbtn = document.querySelector(".back");
+// Dom elements for job description page
+const logoDiv = document.querySelector(".company-logo-img");
+const logo = document.querySelector(".company_logo");
+const companyName = document.querySelector(".Company-name");
+const CompanyLink = document.querySelector(".Company-Link");
+const postedAt = document.querySelector(".role-date");
+const roleType = document.querySelector(".role-type");
+const roleTitle = document.querySelector(".role-name");
+const roleLocation = document.querySelector(".role-location");
+const applyBtn = document.querySelector(".role-apply-now");
+const jobDescription = document.querySelector(".description");
+const jobRequirement = document.querySelector(".requirements-p");
+const requirementsList = document.querySelectorAll(".list");
+const jobDayToDay = document.querySelector(".what-you-will-do-p");
+const jobDayToDayList = document.querySelectorAll(".list2");
 
 
+
+// Function to fetch json data
 function reqData(){
     fetch(url)
        .then(res=>res.json())
        .then(data=>{
-          console.log(data);
+          console.log(data[5]);
            res = data;
+        // calling renderJobs function to render each job using
           data.forEach(current => {
             renderjobs(current);
         });
@@ -24,16 +42,29 @@ function reqData(){
        .catch((error)=>{
           console.error(error);
        })};
-    
 
+    //    function to change the content inside job description when clicking on jobs
+       function updateJobInfo(curr){
+        logoDiv.style.backgroundColor = curr.logoBackground;
+        logo.src = curr.logo;
+        companyName.innerHTML = curr.company;
+        CompanyLink.innerHTML = curr.website;
+        postedAt.innerHTML = curr.postedAt;
+        roleType.innerHTML = curr.contract;
+        roleTitle.innerHTML = curr.position;
+        roleLocation.innerHTML = curr.location;
+        applyBtn.id = curr.id;
+        jobDescription.innerHTML = curr.description;
+        jobRequirement.innerHTML = curr.requirements.content;
+        for (let i = 0; i<requirementsList.length; i++ ){
+            requirementsList[i].innerHTML = curr.requirements.items[i];
+            jobDayToDayList[i].innerHTML = curr.role.items[i];
+        };
+        jobDayToDay.innerHTML = curr.role.content;
+       };
 
-
-
-// console.log(currentJob);
-
-// console.log(users[0]);
-// console.log("hello");
-
+      
+// Function to render the json job postings as cards/dom elements
 
 function renderjobs(current){
     let card = document.createElement("div");
@@ -97,6 +128,7 @@ function renderjobs(current){
     res.forEach(curr => {
         if (card.id == curr.id){
         let currentJob = curr;
+        updateJobInfo(curr);
         console.log(currentJob);
         CompanyBanner.classList.add("Displayanimation2");
         CompanyDetails.classList.add("Displayanimation3");
@@ -105,6 +137,9 @@ function renderjobs(current){
         searchContainer.classList.add("DisplayNone");
         backbtn.classList.add("DisplayFlex")
         setTimeout(() => {
+            window.scrollTo(0,0);
+        }, 500);
+        setTimeout(() => {
             jobPostingContainer.classList.add("DisplayNone")
         }, 1000);
         }
@@ -112,6 +147,8 @@ function renderjobs(current){
     })
 
 }
+
+// back btn goes back to the initial page where the job postings are
 
 backbtn.addEventListener("click", function(){
     jobPostingContainer.classList.add("Displayanimation");

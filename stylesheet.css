@@ -7,6 +7,10 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+  }
+
 body{
     overflow-x: hidden;
     background-color: #F4F6F8;
@@ -289,7 +293,7 @@ header{
   }
 
   .Name_site{
-    width: 30%;
+    width: 50%;
     height: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -313,6 +317,12 @@ header{
     margin: 0px;
   }
    /* Css for the job description page/section when a user presses the job-cards */
+
+   .company_logo{
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+   }
 
   .Job-info-Container{
     width: 60%;
