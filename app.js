@@ -6,8 +6,14 @@ const CompanyDetails = document.querySelector(".Job-info-Container");
 const searchContainer = document.querySelector(".SearchContainer");
 const url = "./data.json";
 let res;
-const testCheck = document.querySelector(".testCheck");
+// search feild dom elements
+const contractCheckBox = document.querySelector(".testCheck");
+const inputTitle = document.querySelector(".title");
+const inputLocation = document.querySelector(".location");
+const searchBtn = document.querySelector(".search");
+const resetBtn = document.querySelector(".Reset");
 const backbtn = document.querySelector(".back");
+const toggleSwitch = document.querySelector(".toggle-switch");
 // Dom elements for job description page
 const logoDiv = document.querySelector(".company-logo-img");
 const logo = document.querySelector(".company_logo");
@@ -23,6 +29,9 @@ const jobRequirement = document.querySelector(".requirements-p");
 const requirementsList = document.querySelectorAll(".list");
 const jobDayToDay = document.querySelector(".what-you-will-do-p");
 const jobDayToDayList = document.querySelectorAll(".list2");
+const jobCard = document.querySelectorAll(".jobCard");
+const footerRole = document.querySelector(".Footer-Role");
+const footerCompany = document.querySelector(".Footer-Company");
 
 
 
@@ -31,7 +40,6 @@ function reqData(){
     fetch(url)
        .then(res=>res.json())
        .then(data=>{
-          console.log(data[5]);
            res = data;
         // calling renderJobs function to render each job using
           data.forEach(current => {
@@ -61,6 +69,9 @@ function reqData(){
             jobDayToDayList[i].innerHTML = curr.role.items[i];
         };
         jobDayToDay.innerHTML = curr.role.content;
+        footerRole.innerHTML = curr.position;
+        footerCompany.innerHTML = curr.company;
+
        };
 
       
@@ -114,14 +125,46 @@ function renderjobs(current){
     location.innerHTML = current.location;
     card.appendChild(location);
 
-    testCheck.addEventListener("click", function(){
-        if(testCheck.checked && contract.innerHTML == "Full Time"){
-        card.style.display = "none";
-        jobPostingContainer.classList.add("Displayanimation");
-        jobPostingContainer.classList.remove("DisplayNoneanimation")
-        } else if (testCheck.checked == false){
-            card.style.display = "block";
+    // testCheck.addEventListener("click", function(){
+    //     if(testCheck.checked && contract.innerHTML == "Full Time"){
+    //     card.style.display = "none";
+    //     jobPostingContainer.classList.add("Displayanimation");
+    //     jobPostingContainer.classList.remove("DisplayNoneanimation")
+    //     } else if (testCheck.checked == false){
+    //         card.style.display = "block";
+    //     }
+    // })
+
+    searchBtn.addEventListener("click", function(){
+
+        if(contractCheckBox.checked && current.contract == "Full Time"){
+
+        } else if(contractCheckBox.checked && current.contract == "Part Time"){
+            card.classList.add("DisplayNone");
         }
+
+        if (current.location.toLowerCase().indexOf(inputLocation.value.toLowerCase()) !== -1){
+
+        } else {
+            card.classList.add("DisplayNone");
+        }
+
+        if (current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1){
+            
+        } else {
+            card.classList.add("DisplayNone");
+        }
+
+        resetBtn.classList.add("DisplayBlock");
+
+        resetBtn.addEventListener("click", function(){
+            card.classList.remove("DisplayNone");
+            inputTitle.value = "";
+            inputLocation.value = "";
+            contractCheckBox.checked = false;
+            resetBtn.classList.remove("DisplayBlock");
+        })
+       
     })
 
     card.addEventListener("click", function(){
@@ -129,7 +172,6 @@ function renderjobs(current){
         if (card.id == curr.id){
         let currentJob = curr;
         updateJobInfo(curr);
-        console.log(currentJob);
         CompanyBanner.classList.add("Displayanimation2");
         CompanyDetails.classList.add("Displayanimation3");
         // jobPostingContainer.classList.remove("Displayanimation");
@@ -163,6 +205,23 @@ backbtn.addEventListener("click", function(){
     }, 1000);
     
 })
+
+// Switch theme Dynamically
+function switchTheme(event){
+    if(event.target.checked){
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.style.transition = "all 2s"
+        localStorage.setItem('theme', 'dark');
+    } else{
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.transition = "all 2s"
+        localStorage.setItem('theme', 'light');
+    }
+
+    
+}
+
+toggleSwitch.addEventListener('change', switchTheme);
 
 
 

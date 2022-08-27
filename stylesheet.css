@@ -1,6 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
 
-*{
+/* These color Palletes will be passed to the root element which is Html */
+:root {
+    --primary-color: black;
+    --primary-variant: lightblue;
+    --secondary-color: blue;
+    --on-background: #F4F6F8;
+    --on-background-2: white;
+}
+
+[data-theme="light"] {
+    --primary-color: black;
+    --primary-variant: lightblue;
+    --secondary-color: blue;
+    --on-background: #F4F6F8;
+    --on-background-2: white;
+}
+
+[data-theme="dark"] {
+    --primary-color: white;
+    --primary-variant: #6E8098;
+    --secondary-color: white;
+    --on-background: #121721;
+    --on-background-2: #19202d;
+}
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -9,24 +34,24 @@
 
 html {
     scroll-behavior: smooth;
-  }
-
-body{
-    overflow-x: hidden;
-    background-color: #F4F6F8;
-    height: auto;
 }
 
-.OuterContainer{
+body {
+    overflow-x: hidden;
+    background-color: var(--on-background);
+    height: auto;
+    transition: 1s ease-in-out;
+}
+
+.OuterContainer {
     width: 100%;
     height: auto;
-    background-color: #F2F2F2;
 }
 
-header{
+header {
     width: 100%;
     height: 25%;
-    background-image:url(assets/desktop/bg-pattern-header.svg) ;
+    background-image: url(assets/desktop/bg-pattern-header.svg);
     background-repeat: no-repeat;
     background-position: right top;
     background-size: 100%;
@@ -37,7 +62,7 @@ header{
 
 }
 
-.LogoConatiner{
+.LogoConatiner {
     width: 65%;
     height: 50%;
     display: flex;
@@ -46,7 +71,7 @@ header{
     margin: -10px auto;
 }
 
-.Light-DarkMode{
+.Light-DarkMode {
     width: auto;
     display: flex;
     justify-content: center;
@@ -54,7 +79,7 @@ header{
     padding: 20px;
 }
 
-.Light-DarkMode img{
+.Light-DarkMode img {
     width: 20px;
 }
 
@@ -65,153 +90,165 @@ header{
     width: 50px;
     height: 24px;
     margin: 0px 20px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
+}
+
+/* Hide default HTML checkbox */
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+/* The slider */
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 16px;
     width: 16px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: #939bf4;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
+}
+
+input:checked+.slider {
+    background-color: white;
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+}
 
-  /* Search Feild css */
-  .SearchContainer{
-     width: 65%;
-    height: 30%; 
-    background-color: white;
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Search Feild css */
+.SearchContainer {
+    width: 75%;
+    height: 30%;
+    background-color: var(--on-background-2);
     position: absolute;
     top: 90%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    
-  }
+    transition: 1s ease-in-out;
 
-  .SearchContainer img{
+}
+
+.SearchContainer img {
     padding: 5px;
-  }
+}
 
-  .title{
-    width: 40%;
-    height: 100%;
-    border: none;
-    border-right: solid 1px gray;
-  }
-
-  .location{
+.title {
     width: 30%;
     height: 100%;
     border: none;
     border-right: solid 1px gray;
-  }
+    background-color: var(--on-background-2);
+    transition: 1s ease-in-out;
+}
 
-    .submit{
+.location {
     width: 30%;
-    min-width: 250px;
+    height: 100%;
+    border: none;
+    border-right: solid 1px gray;
+    background-color: var(--on-background-2);
+    transition: 1s ease-in-out;
+}
+
+.submit {
+    width: 35%;
+    min-width: 350px;
     height: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-  }
+}
 
-  .submit button{
+.submit button {
     padding: 5px 15px;
     background-color: #2196F3;
     border: solid #2196F3;
-  }
+}
 
-  /* Header Section complete */
+.Reset {
+    background-color: gray;
+    margin: 0px 10px;
+    display: none;
+}
 
-  /* main section */
-  main{
+/* Header Section complete */
+
+/* main section */
+main {
     width: 100%;
     height: auto;
-    background-color: #F4F6F8;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 20px auto;
     position: relative;
-   overflow: visible;
-   /* overflow-y: hidden; */
-   
-  }
+    overflow: visible;
+    /* overflow-y: hidden; */
 
-  /* All the css pertaining the job cards */
+}
 
-  .Job-Posting-Container{
+/* All the css pertaining the job cards */
+
+.Job-Posting-Container {
     width: 70%;
     max-width: 2000px;
     height: auto;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin: 50px auto;
     transition: 1s ease-in-out;
-   
-  }
 
-  .jobCard{
+}
+
+.jobCard {
     width: 29%;
     height: 250px;
-    background-color: white;
+    background-color: var(--on-background-2);
     margin: 40px 10px;
     position: relative;
     border-radius: 10px;
-  }
+    transition: 1s ease-in-out;
+    cursor: pointer;
+}
 
-  .logocard{
+.logocard {
     width: 65px;
     height: 65px;
     background-color: yellow;
@@ -222,77 +259,87 @@ header{
     position: absolute;
     top: -13%;
     left: 5%;
-  }
+}
 
-  .companyLogo{
+.companyLogo {
     width: 90%;
     object-fit: contain;
-  }
+}
 
-  .jobInfo{
+.jobInfo {
     width: 100%;
     display: flex;
     align-items: center;
     margin: 55px 0px 10px 0px;
-  }
+}
 
-  .jobInfo .dot{
+.jobInfo .dot {
     font-weight: bold;
-  }
-  .jobInfo .CompanyName, p{
+}
+
+.jobInfo .CompanyName,
+p {
     margin: 0px 10px;
     color: #9DAEC2;
-  }
+}
 
-  .jobCard .Role{
+.jobCard .Role {
     margin: 10px 10px;
-  }
+    color: var(--primary-color);
+    transition: 1s ease-in-out;
+}
 
-  .jobCard .jobLocation{
+.jobCard .jobLocation {
     margin: 30px 10px 0px 10px;
-    color: black;
+    color: #939bf4;
 
-  }
+}
 
-  /* Css for the info header with logo and site link when a user presses the job-cards */
+/* Css for the info header with logo and site link when a user presses the job-cards */
 
 
-  .Company-Info{
+.Company-Info {
     width: 60%;
     max-width: 2000px;
     height: 180px;
     margin: 0px;
     position: absolute;
     top: 20px;
-   display: none;
-   z-index: 10;
-  }
+    display: none;
+    z-index: 10;
+}
 
-  .company-logo-img{
+.company-logo-img {
     width: 30%;
     height: 100%;
     background-color: yellow;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .company-logo-img img{
+.company-logo-img img {
     width: 70%;
     object-fit: contain;
-  }
+}
 
-  .Company-Site{
+.Company-Site {
     width: 70%;
     height: 100%;
-    background-color: white;
+    background-color: var(--on-background-2);
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0px auto;
-  }
+    transition: 1s ease-in-out;
+}
 
-  .Name_site{
+.Company-name {
+    color: var(--primary-color);
+    transition: 1s ease-in-out;
+}
+
+.Name_site {
     width: 50%;
     height: 100%;
     display: flex;
@@ -300,63 +347,75 @@ header{
     align-items: center;
     flex-direction: column;
     text-align: left;
-  }
+}
 
-  .company-site-btn{
+.company-site-btn {
     padding: 20px 25px;
     margin: 0px 40px;
-    background-color: #00FFFF;
+    background-color: var(--primary-variant);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
-  }
+    color: var(--secondary-color);
+    transition: 1s ease-in-out;
+
+}
 
 
-  .Name_site p{
+.Name_site p {
     margin: 0px;
-  }
-   /* Css for the job description page/section when a user presses the job-cards */
+}
 
-   .company_logo{
+/* Css for the job description page/section when a user presses the job-cards */
+
+.company_logo {
     width: 80%;
     height: 80%;
     object-fit: contain;
-   }
+}
 
-  .Job-info-Container{
+.Job-info-Container {
     width: 60%;
     max-width: 2000px;
     height: auto;
     min-height: 100vh;
-    background-color: white;
+    background-color: var(--on-background-2);
     margin-top: 50px;
     display: none;
-    
-  }
 
-  .role-container{
+}
+
+.role-container {
     display: inline-block;
     margin: 10px 40px;
-    
-  }
 
-  .role-cta{
+}
+
+.role-cta {
     width: 100%;
     height: 180px;
     position: relative;
-  }
+}
 
-  .role-type, .role-date, .role-location{
+.role-type,
+.role-date,
+.role-location {
     display: inline-block;
     margin: 15px 10px;
-  }
+}
 
-  .role-name{
+.role-name {
     margin: 10px 10px;
-  }
+    color: var(--primary-color);
+    transition: 1s ease-in-out;
+}
 
-  .role-apply-now{
+.role-location {
+    color: blue;
+    ;
+}
+
+.role-apply-now {
     padding: 18px 35px;
     margin: 0px 40px;
     background-color: blueviolet;
@@ -367,203 +426,211 @@ header{
     right: 0px;
     bottom: 50px;
 
-  }
+}
 
-  .description{
+.description {
     width: 90%;
     margin: 20px auto;
     line-height: 25px;
-  }
+}
 
-  .requirements{
+.requirements {
     width: 90%;
     margin: 30px auto;
-  }
+    color: var(--primary-color);
+    transition: 1s ease-in-out;
+}
 
-  .requirements-p{
+.requirements-p {
     width: 90%;
     margin: 20px auto;
     line-height: 25px;
-  }
+}
 
-  .requirements-li{
+.requirements-li {
     width: 87%;
     margin: 30px auto;
     color: gray;
-  }
+}
 
-  .list{
+.list {
     margin: 15px 0px;
-  }
+}
 
-  .what-you-will-do{
+.what-you-will-do {
     width: 90%;
     margin: 40px auto 20px auto;
-  }
+    color: var(--primary-color);
+    transition: 1s ease-in-out;
+}
 
-  .what-you-will-do-p{
+.what-you-will-do-p {
     width: 90%;
     margin: 20px auto;
     line-height: 25px;
-  }
+}
 
-  .role-li{
+.role-li {
     width: 87%;
     margin: 30px auto;
     color: gray;
-  }
+}
 
-  .list2{
+.list2 {
     margin: 15px 0px;
-  }
-  /* footer for info page */
-  .cta2-container{
+}
+
+/* footer for info page */
+.cta2-container {
     width: 100%;
     height: 150px;
-    background-color: white;
-    margin-top: 60px;
+    margin: 10px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
-    
-  }
+    border: solid var(--primary-color) 1px;
+    transition: 1s ease-in-out;
 
-  .cta2{
+
+}
+
+.cta2 {
     width: 61%;
     height: 100px;
-    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-  }
+}
 
-  .cta2 button{
+.cta2 button {
     padding: 18px 35px;
     margin: 0px 0px;
     background-color: blueviolet;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
-  .back{
+.back {
     width: 50px;
     position: absolute;
-   right: 0%;
+    right: 0%;
     top: -50px;
-  border: none;
-  background-color: transparent;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  color: gray;
-  cursor: pointer;
-  }
+    border: none;
+    background-color: transparent;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+}
 
-  .DisplayFlex{
+.DisplayFlex {
     display: flex;
-  }
+}
 
-  .DisplayBlock{
+.DisplayBlock {
     display: block;
-  }
+}
 
-  .DisplayNone{
+.DisplayNone {
     display: none;
     transition: 1s ease-in-out;
-  }
+}
 
-  .DisplayNoneanimation{
+.DisplayNoneanimation {
     animation: displayNone 1s ease-out forwards;
     animation-fill-mode: forwards;
     transition: 1s ease-in-out;
-  }
+}
 
-  .Displayanimation{
+.Displayanimation {
     animation: displayagain 1s ease-out forwards;
     animation-fill-mode: forwards;
     transition: 1s ease-in-out;
-  }
+}
 
-  .Displayanimation2{
+.Displayanimation2 {
     animation: display1 1s ease-out forwards;
     animation-fill-mode: forwards;
     transition: 1s ease-in-out;
     display: flex;
-  }
+}
 
-  .Displayanimation3{
+.Displayanimation3 {
     animation: display2 1s ease-out forwards;
     animation-fill-mode: forwards;
     transition: 1s ease-in-out;
     display: block;
     position: absolute;
-    top:200px;
-  }
+    top: 200px;
+}
 
-  
+button {
+    cursor: pointer;
+}
 
-  @keyframes displayNone {
-   0%{
-    opacity: 1;
-    position: relative;
-    left: 0%;
-   }
 
- 
 
-   100%{
-    position: relative;
-    opacity: 0.1;
-    left: -100%;
-    height: 100vh;
-   }
-  }
-
-  @keyframes displayagain {
-    0%{
-     opacity: 0.1;
-     position: relative;
-     left: -100%;
+@keyframes displayNone {
+    0% {
+        opacity: 1;
+        position: relative;
+        left: 0%;
     }
- 
-  
- 
-    100%{
-     position: relative;
-     opacity: 1;
-     left: 0%;
-    }
-   }
 
-   @keyframes display1 {
-    0%{
-     opacity: 0;
+
+
+    100% {
+        position: relative;
+        opacity: 0.1;
+        left: -100%;
+        height: 100vh;
+    }
+}
+
+@keyframes displayagain {
+    0% {
+        opacity: 0.1;
+        position: relative;
+        left: -100%;
+    }
+
+
+
+    100% {
+        position: relative;
+        opacity: 1;
+        left: 0%;
+    }
+}
+
+@keyframes display1 {
+    0% {
+        opacity: 0;
         display: flex;
-   }
-    
-
-    100%{
-     opacity: 1;
-     display: flex;
     }
-   }
 
-   @keyframes display2 {
-    0%{
-     opacity: 0;
+
+    100% {
+        opacity: 1;
+        display: flex;
+    }
+}
+
+@keyframes display2 {
+    0% {
+        opacity: 0;
         display: block;
-   }
-    
-
-    100%{
-     opacity: 1;
-     display: block;
     }
-   }
+
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}
 
 
 
@@ -572,7 +639,7 @@ header{
 
 
 
-  @media only screen and (min-width: 2500px){
+@media only screen and (min-width: 2500px) {
     header {
         width: 100%;
         height: fit-content;
@@ -613,79 +680,79 @@ header{
         width: 36px;
     }
 
-    .SearchContainer{
-       top: 100%;
-       left: 50%;
-       transform: translate(-50%,-50%);
-     }
+    .SearchContainer {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-     input::placeholder{
+    input::placeholder {
         font-size: 22px;
         margin: 10px;
-     }
+    }
 
-     input{
+    input {
         font-size: 26px;
-     }
+    }
 
-     .submit p{
+    .submit p {
         font-size: 26px;
-     }
+    }
 
-     .submit button{
+    .submit button {
         font-size: 22px;
-     }
+    }
+
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .LogoConatiner {
+        width: 85%;
+        height: 40%;
+    }
+
+    .SearchContainer {
+        width: 75%;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .Job-Posting-Container {
+        width: 90%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .Company-Info {
+        width: 80%;
+    }
+
+    .Job-info-Container {
+        width: 80%;
+    }
+
+    .cta2 {
+        width: 80%;
 
     }
 
-    @media only screen and (max-width: 1000px){
 
-        .LogoConatiner{
-            width: 85%;
-            height: 40%;
-        }
-
-        .SearchContainer{
-            width: 75%;
-            top: 80%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-
-        .Job-Posting-Container{
-            width: 90%;
-            height: auto;
-            justify-content:center;
-            align-items: center;
-            flex-wrap: wrap;
-          }
-
-          .Company-Info{
-            width: 80%;
-          }
-
-          .Job-info-Container{
-            width: 80%;
-          }
-
-          .cta2 {
-            width: 80%;
-    
-        }
-
-          
-    }
+}
 
 
 
-  @media only screen and (max-width: 800px){
-    header{
+@media only screen and (max-width: 800px) {
+    header {
         width: 100%;
-        
-        background-image:url(assets/tablet/bg-pattern-header.svg) ;
+
+        background-image: url(assets/tablet/bg-pattern-header.svg);
     }
 
-    .LogoConatiner{
+    .LogoConatiner {
         width: 75%;
         height: 40%;
         display: flex;
@@ -693,60 +760,60 @@ header{
         align-items: center;
     }
 
-    .SearchContainer{
+    .SearchContainer {
         width: 75%;
         top: 95%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
 
-    .jobCard{
+    .jobCard {
         width: 38%;
         height: 250px;
         background-color: white;
         margin: 40px 15px;
         position: relative;
         border-radius: 10px;
-      }
+    }
 
-      .Company-Info{
+    .Company-Info {
         width: 90%;
         top: 35px;
-      }
+    }
 
-      
 
-      .Job-info-Container{
+
+    .Job-info-Container {
         width: 90%;
         margin-top: 70px;
-      }
+    }
 
-      .cta2 {
+    .cta2 {
         width: 89%;
 
     }
 
 
-  }
+}
 
-@media only screen and (max-width: 600px){
-    .SearchContainer{
+@media only screen and (max-width: 600px) {
+    .SearchContainer {
         width: 95%;
         top: 85%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
 
-    .jobCard{
+    .jobCard {
         width: 45%;
         height: 250px;
         background-color: white;
         margin: 40px 5px;
         position: relative;
         border-radius: 10px;
-      }
+    }
 
-      .Company-Info{
+    .Company-Info {
         width: 90%;
         height: 220px;
         margin: 10px;
@@ -755,9 +822,9 @@ header{
         flex-direction: column;
         background-color: white;
         top: 35px;
-      }
+    }
 
-      .Company-Site {
+    .Company-Site {
         width: 100%;
         height: 100%;
         flex-direction: column;
@@ -795,20 +862,20 @@ header{
         position: relative;
     }
 
-    main{
+    main {
         margin: 20px auto;
-       
-      }
 
-      .back{
+    }
+
+    .back {
         width: 30px;
         position: absolute;
         right: 91%;
-      }
+    }
 
-      
 
-      
+
+
 
     /* .Job-info-Container {
         margin-top: 260px;
@@ -816,13 +883,13 @@ header{
 }
 
 
-@media only screen and (max-width: 500px){
-    header{
+@media only screen and (max-width: 500px) {
+    header {
         width: 100%;
-        background-image:url(assets/mobile/bg-pattern-header.svg) ;
+        background-image: url(assets/mobile/bg-pattern-header.svg);
     }
 
-    .LogoConatiner{
+    .LogoConatiner {
         width: 98%;
         height: 40%;
         display: flex;
@@ -831,38 +898,41 @@ header{
         margin: 10px 0px;
     }
 
-    .SearchContainer{
-        width: 95%;
+    .SearchContainer {
+        width: 100%;
         top: 95%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
 
-    .title, .location::placeholder {
+    .title,
+    .location::placeholder {
         font-size: 10px;
     }
 
-    .submit{
+    .submit {
         width: 200px;
         min-width: 160px;
         font-size: 10px;
     }
 
-    .submit button{
-        padding: 5px 5px;
+    .submit button {
+        padding: 0px 0px;
     }
 
-    .jobCard{
+    .jobCard {
         width: 70%;
         height: 250px;
         background-color: white;
         margin: 40px 5px;
         position: relative;
         border-radius: 10px;
-      }
+    }
 
-     
-      
-
-     
 }
+
+/* what is left to do
+add hover state
+make sure larger screen is responsive
+make sure elements dont over lap
+add the see more button */
