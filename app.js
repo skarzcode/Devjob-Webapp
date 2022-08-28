@@ -221,6 +221,19 @@ function switchTheme(event){
     
 }
 
+const currentTheme = localStorage.getItem('theme');
+
+if(currentTheme){
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'dark'){
+        toggleSwitch.checked = true;
+    } else if(currentTheme === 'light'){
+        toggleSwitch.checked = false;
+    } else if(!currentTheme){
+        lightMode()
+    };
+} 
+
 toggleSwitch.addEventListener('change', switchTheme);
 
 

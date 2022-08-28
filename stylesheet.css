@@ -511,6 +511,10 @@ p {
     cursor: pointer;
 }
 
+.cta2 h2{
+    color: var(--primary-color);
+}
+
 .back {
     width: 50px;
     position: absolute;
@@ -740,7 +744,6 @@ button {
 
     }
 
-
 }
 
 
@@ -770,7 +773,6 @@ button {
     .jobCard {
         width: 38%;
         height: 250px;
-        background-color: white;
         margin: 40px 15px;
         position: relative;
         border-radius: 10px;
@@ -807,7 +809,6 @@ button {
     .jobCard {
         width: 45%;
         height: 250px;
-        background-color: white;
         margin: 40px 5px;
         position: relative;
         border-radius: 10px;
@@ -820,7 +821,6 @@ button {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        background-color: white;
         top: 35px;
     }
 
@@ -923,7 +923,6 @@ button {
     .jobCard {
         width: 70%;
         height: 250px;
-        background-color: white;
         margin: 40px 5px;
         position: relative;
         border-radius: 10px;
