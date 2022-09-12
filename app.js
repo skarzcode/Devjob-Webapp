@@ -6,6 +6,7 @@ const CompanyDetails = document.querySelector(".Job-info-Container");
 const searchContainer = document.querySelector(".SearchContainer");
 const url = "./data.json";
 let res;
+
 // search feild dom elements
 const contractCheckBox = document.querySelector(".testCheck");
 const inputTitle = document.querySelector(".title");
@@ -14,6 +15,7 @@ const searchBtn = document.querySelector(".search");
 const resetBtn = document.querySelector(".Reset");
 const backbtn = document.querySelector(".back");
 const toggleSwitch = document.querySelector(".toggle-switch");
+
 // Dom elements for job description page
 const logoDiv = document.querySelector(".company-logo-img");
 const logo = document.querySelector(".company_logo");
@@ -76,7 +78,6 @@ function reqData(){
 
       
 // Function to render the json job postings as cards/dom elements
-
 function renderjobs(current){
     let card = document.createElement("div");
     card.id = current.id;
@@ -135,6 +136,39 @@ function renderjobs(current){
     //     }
     // })
 
+    inputTitle.addEventListener("input", function(){
+        if (current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1){
+            resetBtn.classList.add("DisplayBlock");
+        }
+        else {
+            card.classList.add("DisplayNone");
+            resetBtn.classList.add("DisplayBlock");
+        }
+    })
+
+   
+
+    document.addEventListener("keydown", function(event) {
+  if (event.key == "Backspace" && current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1 && current.location.toLowerCase().indexOf(inputLocation.value.toLowerCase()) !== -1) {
+    card.classList.remove("DisplayNone");
+  } 
+  if(event.key == "Backspace" && current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1 && inputLocation.value.length == 1){
+    card.classList.remove("DisplayNone");
+  } else if(event.key == "Backspace" && current.location.toLowerCase().indexOf(inputLocation.value.toLowerCase()) !== -1 && inputTitle.value.length == 1){
+    card.classList.remove("DisplayNone");
+  }
+    })
+
+    inputLocation.addEventListener("input", function(){
+        if (current.location.toLowerCase().indexOf(inputLocation.value.toLowerCase()) !== -1){
+            resetBtn.classList.add("DisplayBlock");
+        } else {
+            card.classList.add("DisplayNone");
+            resetBtn.classList.add("DisplayBlock");
+        }
+    })
+
+
     searchBtn.addEventListener("click", function(){
 
         if(contractCheckBox.checked && current.contract == "Full Time"){
@@ -157,14 +191,16 @@ function renderjobs(current){
 
         resetBtn.classList.add("DisplayBlock");
 
-        resetBtn.addEventListener("click", function(){
-            card.classList.remove("DisplayNone");
-            inputTitle.value = "";
-            inputLocation.value = "";
-            contractCheckBox.checked = false;
-            resetBtn.classList.remove("DisplayBlock");
-        })
+   
        
+    })
+
+    resetBtn.addEventListener("click", function(){
+        card.classList.remove("DisplayNone");
+        inputTitle.value = "";
+        inputLocation.value = "";
+        contractCheckBox.checked = false;
+        resetBtn.classList.remove("DisplayBlock");
     })
 
     card.addEventListener("click", function(){
@@ -190,21 +226,9 @@ function renderjobs(current){
 
 }
 
-// back btn goes back to the initial page where the job postings are
 
-backbtn.addEventListener("click", function(){
-    jobPostingContainer.classList.add("Displayanimation");
-    jobPostingContainer.classList.remove("DisplayNone");
-    jobPostingContainer.classList.remove("DisplayNoneanimation")
-    CompanyBanner.classList.remove("Displayanimation2");
-    CompanyDetails.classList.remove("Displayanimation3");
-    searchContainer.classList.remove("DisplayNone");
-    backbtn.classList.remove("DisplayFlex")
-    setTimeout(() => {
-        jobPostingContainer.classList.remove("Displayanimation");
-    }, 1000);
-    
-})
+
+
 
 // Switch theme Dynamically
 function switchTheme(event){
@@ -222,7 +246,7 @@ function switchTheme(event){
 }
 
 const currentTheme = localStorage.getItem('theme');
-
+// Checking  to see if user already choose a theme which would be stored in local storage.
 if(currentTheme){
     document.documentElement.setAttribute('data-theme', currentTheme);
     if (currentTheme === 'dark'){
@@ -234,7 +258,25 @@ if(currentTheme){
     };
 } 
 
+
+
+// back btn goes back to the initial page where the job postings are
+backbtn.addEventListener("click", function(){
+    jobPostingContainer.classList.add("Displayanimation");
+    jobPostingContainer.classList.remove("DisplayNone");
+    jobPostingContainer.classList.remove("DisplayNoneanimation")
+    CompanyBanner.classList.remove("Displayanimation2");
+    CompanyDetails.classList.remove("Displayanimation3");
+    searchContainer.classList.remove("DisplayNone");
+    backbtn.classList.remove("DisplayFlex")
+    setTimeout(() => {
+        jobPostingContainer.classList.remove("Displayanimation");
+    }, 1000);
+    
+})
+// event listener to change themes
 toggleSwitch.addEventListener('change', switchTheme);
+
 
 
 
