@@ -78,6 +78,7 @@ function reqData(){
 
       
 // Function to render the json job postings as cards/dom elements
+// Function for search feild inside the render function
 function renderjobs(current){
     let card = document.createElement("div");
     card.id = current.id;
@@ -137,7 +138,7 @@ function renderjobs(current){
     // })
 
     inputTitle.addEventListener("input", function(){
-        if (current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1){
+        if (current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1 || current.company.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1  ){
             resetBtn.classList.add("DisplayBlock");
         }
         else {
@@ -149,10 +150,10 @@ function renderjobs(current){
    
 
     document.addEventListener("keydown", function(event) {
-  if (event.key == "Backspace" && current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1 && current.location.toLowerCase().indexOf(inputLocation.value.toLowerCase()) !== -1) {
+  if (event.key == "Backspace" && (current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1 || current.company.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1) && current.location.toLowerCase().indexOf(inputLocation.value.toLowerCase()) !== -1) {
     card.classList.remove("DisplayNone");
   } 
-  if(event.key == "Backspace" && current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1 && inputLocation.value.length == 1){
+  if(event.key == "Backspace" && (current.position.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1 || current.company.toLowerCase().indexOf(inputTitle.value.toLowerCase()) !== -1) && inputLocation.value.length == 1){
     card.classList.remove("DisplayNone");
   } else if(event.key == "Backspace" && current.location.toLowerCase().indexOf(inputLocation.value.toLowerCase()) !== -1 && inputTitle.value.length == 1){
     card.classList.remove("DisplayNone");
